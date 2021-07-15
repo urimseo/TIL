@@ -53,23 +53,24 @@
 
 ## 강조(Emphasis)
 
-각각 **`<em>`**, **`<strong>`**, **`<del>`** 태그로 변환됩니다.
+각각 **`<em>`**, **`<strong>`**, **`<del>`** 태그로 변환됨.
 
-밑줄을 입력하고 싶다면 **`<u></u>`** 태그를 사용하세요.
+밑줄을 입력하고 싶다면 **`<u></u>`** 태그를 사용
 
 ```
-이텔릭체는*별표(asterisks)* 혹은_언더바(underscore)_를 사용하세요.
-두껍게는**별표(asterisks)** 혹은__언더바(underscore)__를 사용하세요.
-**_이텔릭체_와 두껍게**를 같이 사용할 수 있습니다.
-취소선은 ~~물결표시(tilde)~~를 사용하세요.
-<u>밑줄</u>은 `<u></u>`를 사용하세요.
+이텔릭체는*별표(asterisks)* 혹은 _언더바(underscore)_
+두껍게는**별표(asterisks)** 혹은 __언더바(underscore)__
+
+**_이텔릭체_와 두껍게**를 같이 사용가능.
+취소선은 ~~물결표시(tilde)~~.
+<u>밑줄</u>은 `<u></u>`
 ```
 
-이텔릭체는 *별표(asterisks)* 혹은 *언더바(underscore)*를 사용하세요.두껍게는 **별표(asterisks)** 혹은 **언더바(underscore)**를 사용하세요.***이텔릭체\*와 두껍게**를 같이 사용할 수 있습니다.취소선은 ~~물결표시(tilde)~~를 사용하세요.밑줄은 **`<u></u>`**를 사용하세요.
+
 
 ## 목록(List)
 
-**`<ol>`**, **`<ul>`** 목록 태그로 변환됩니다.
+**`<ol>`**, **`<ul>`** 목록 태그로 변환됨.
 
 ```
 1. 순서가 필요한 목록
@@ -90,11 +91,10 @@
 1. 순서가 필요한 목록
 2. 순서가 필요한 목록
    - 순서가 필요하지 않은 목록(서브)
+   
    - 순서가 필요하지 않은 목록(서브)
-3. 순서가 필요한 목록
-   1. 순서가 필요한 목록(서브)
-   2. 순서가 필요한 목록(서브)
-4. 순서가 필요한 목록
+   
+     
 
 - 순서가 필요하지 않은 목록에 사용 가능한 기호
   - 대쉬(hyphen)
@@ -103,7 +103,7 @@
 
 ## 링크(Links)
 
-**`<a>`**로 변환됩니다.
+**`<a>`**로 변환
 
 ```
 [GOOGLE](<https://google.com>)
@@ -118,13 +118,13 @@
 
 문서 안에서 [참조 링크]를 그대로 사용할 수도 있습니다.
 
-다음과 같이 문서 내 일반 URL이나 꺾쇠 괄호(`< >`, Angle Brackets)안의 URL은 자동으로 링크를 사용합니다.
+문서 내 일반 URL이나 꺾쇠 괄호(`< >`, Angle Brackets)안의 URL은 자동으로 링크를 사용
 구글 홈페이지:<https://google.com>
 네이버 홈페이지: <https://naver.com>
 
 [Dribbble link]:<https://dribbble.com>
 [1]:<https://github.com>
-[참조 링크]:<https://naver.com> "네이버로 이동합니다!"
+[참조 링크]:<https://naver.com> "네이버로 이동!"
 ```
 
 [GOOGLE](https://google.com/)
@@ -137,15 +137,17 @@
 
 [GitHub](https://github.com/)
 
-문서 안에서 [참조 링크](https://naver.com/)를 그대로 사용할 수도 있습니다.
+문서 안에서 [참조 링크](https://naver.com/)를 그대로 사용할 수 있음
 
-다음과 같이 문서 내 일반 URL이나 꺾쇠 괄호(**`< >`**, Angle Brackets)안의 URL은 자동으로 링크를 사용합니다.
+다음과 같이 문서 내 일반 URL이나 꺾쇠 괄호(**`< >`**, Angle Brackets)안의 URL은 자동으로 링크를 사용
 
 구글 홈페이지: https://google.com네이버 홈페이지: https://naver.com
 
+
+
 ## 이미지(Images)
 
-**`<img>`**로 변환됩니다.링크과 비슷하지만 앞에 **`!`**가 붙습니다.
+**`<img>`**로 변환. 링크과 비슷하지만 앞에 **`!`**가 붙는다.
 
 ```
 ![대체 텍스트(alternative text)를 입력하세요!](<http://www.gstatic.com/webp/gallery/5.jpg> "링크 설명(title)을 작성하세요.")
@@ -157,31 +159,26 @@
 
 
 
-### 이미지에 링크
-
-마크다운 이미지 코드를 링크 코드로 묶어 줍니다.
-
-```
-[![Vue](/images/vue.png)](<https://kr.vuejs.org/>)
-```
-
-![https://heropy.blog/images/vue.png](https://heropy.blog/images/vue.png)
-
 ## 코드(Code) 강조
 
-<pre>, **<code>**로 변환됩니다.숫자 1번 키 왼쪽에 있는 ```(Grave)를 입력하세요
+<pre>, **<code>**로 변환. 숫자 1번 키 왼쪽에 있는 ```(Grave) 입력
+
+
+
 
 ### 인라인(inline) 코드 강조
 
 ```
-`background`혹은 `background-image` 속성으로 요소에 배경 이미지를 삽입할 수 있습니다.
+`background`혹은 `background-image` 속성으로 요소에 배경 이미지를 삽입가능
 ```
 
-**`background`**혹은 **`background-image`** 속성으로 요소에 배경 이미지를 삽입할 수 있습니다.
+**`background`**혹은 **`background-image`** 속성으로 요소에 배경 이미지를 삽입
+
+
 
 ### 블록(block) 코드 강조
 
-**```**를 3번 이상 입력하고 코드 종류도 적습니다.
+**```**를 3번 이상 입력하고 코드 종류 작성.
 
 ```
 ​```html
@@ -191,13 +188,13 @@
 ```css
 .list > li {
   position: absolute;
-  top: 40px;
+  top: 50px;
 }
 ```
 
 ```javascript
 function func() {
-  var a = 'AAA';
+  var a = 'hello';
   return a;
 }
 ```
@@ -207,8 +204,8 @@ $ vim ./~zshrc
 ```
 
 ```python
-s = "Python syntax highlighting"
-print s
+a = "Python syntax highlighting"
+print a
 ```
 
 ```
@@ -216,41 +213,11 @@ No language indicated, so no syntax highlighting.
 But let's throw in atag.
 ```
 
-```
 
-```
 
 <a href="https://www.google.co.kr/" target="_blank">GOOGLE</a>
 
-```
 
-```
-
-.list > li { position: absolute; top: 40px; }
-
-```
-
-```
-
-function func() { var a = 'AAA'; return a; }
-
-```
-
-```
-
-$ vim ./~zshrc
-
-```
-
-```
-
-s = "Python syntax highlighting" print s
-
-```
-
-```
-
-No language indicated, so no syntax highlighting. But let's throw in a <b>tag</b>.
 
 ```
 ## 표(Table)
@@ -306,56 +273,9 @@ BREAK!
 마크다운 문법이 아닌 원시 HTML 문법을 사용할 수 있습니다.
 ```
 
-<u>마크다운에서 지원하지 않는 기능</u>을 사용할 때 유용하며 대부분 잘 동작합니다.
 
-<img width="150" src="http://www.gstatic.com/webp/gallery/4.jpg" alt="Prunus" title="A Wild Cherry (Prunus avium) in flower">
 
-![Prunus](http://www.gstatic.com/webp/gallery/4.jpg)
 
-```
-마크다운에서 지원하지 않는 기능을 사용할 때 유용하며 대부분 잘 동작합니다.
 
-![<http://www.gstatic.com/webp/gallery/4.jpg>](<http://www.gstatic.com/webp/gallery/4.jpg>)
 
-![<http://www.gstatic.com/webp/gallery/4.jpg>](<http://www.gstatic.com/webp/gallery/4.jpg>)
 
-## 수평선(Horizontal Rule)
-
-각 기호를 3개 이상 입력하세요.
-```
-
-------
-
-(Hyphens)
-
-------
-
-(Asterisks)
-
-------
-
-(Underscores)
-
-```
----
-
-(Hyphens)
-
----
-
-(Asterisks)
-
----
-
-(Underscores)
-
-## 줄바꿈(Line Breaks)
-```
-
-동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세   <!--띄어쓰기 2번--> 무궁화 삼천리 화려 강산<br> 대한 사람 대한으로 길이 보전하세
-
-```
-동해물과 백두산이 마르고 닳도록하느님이 보우하사 우리나라 만세무궁화 삼천리 화려 강산대한 사람 대한으로 길이 보전하세
-
-> 일반 줄비꿈이 동작하지 않는 환경(설정 및 버전에 따라)의 경우, ‘2번의 띄어쓰기’나 <br>를 활용할 수 있습니다.
-```
