@@ -28,7 +28,7 @@
 
 # 마크다운 문법(syntax)
 
-## 1) 제목(Header)
+### 제목(Header)
 
 **`<h1>`**부터 **`<h6>`**까지 제목 표현  - 글머리 1~6까지만 지원
 
@@ -41,17 +41,9 @@
 ###### 제목 H6
 ```
 
-제목1(h1)과 제목2(h2)는 다음과 같이 표현가능.
 
-```
-제목 1
-======
 
-제목 2
-------
-```
-
-## 강조(Emphasis)
+### 강조(Emphasis)
 
 각각 **`<em>`**, **`<strong>`**, **`<del>`** 태그로 변환됨.
 
@@ -68,7 +60,7 @@
 
 
 
-## 목록(List)
+### 목록(List)
 
 **`<ol>`**, **`<ul>`** 목록 태그로 변환됨.
 
@@ -101,7 +93,7 @@
   - 별표(asterisks)
   - 더하기(plus sign)
 
-## 링크(Links)
+### 링크(Links)
 
 **`<a>`**로 변환
 
@@ -129,23 +121,13 @@
 
 [GOOGLE](https://google.com/)
 
-[NAVER](https://naver.com/)
-
-[상대적 참조](https://heropy.blog/2017/09/30/users/login)
-
-[Dribbble](https://dribbble.com/)
-
-[GitHub](https://github.com/)
-
 문서 안에서 [참조 링크](https://naver.com/)를 그대로 사용할 수 있음
 
 다음과 같이 문서 내 일반 URL이나 꺾쇠 괄호(**`< >`**, Angle Brackets)안의 URL은 자동으로 링크를 사용
 
-구글 홈페이지: https://google.com네이버 홈페이지: https://naver.com
 
 
-
-## 이미지(Images)
+### 이미지(Images)
 
 **`<img>`**로 변환. 링크과 비슷하지만 앞에 **`!`**가 붙는다.
 
@@ -159,11 +141,9 @@
 
 
 
-## 코드(Code) 강조
+### 코드(Code) 강조
 
 <pre>, **<code>**로 변환. 숫자 1번 키 왼쪽에 있는 ```(Grave) 입력
-
--
 
 
 
@@ -188,7 +168,7 @@ $$
 
 **```**를 3번 이상 입력하고 코드 종류 작성. (ctrl + shift +k)
 
-```
+```html
 ​```html
 <a href="<https://www.google.co.kr/>" target="_blank">GOOGLE</a>
 ```
@@ -207,30 +187,19 @@ function func() {
 }
 ```
 
-```bash
-$ vim ./~zshrc
-```
-
-```python
-a = "Python syntax highlighting"
-print a
-```
-
-```
-No language indicated, so no syntax highlighting.
-But let's throw in atag.
-```
 
 
 
-<a href="https://www.google.co.kr/" target="_blank">GOOGLE</a>
 
-
+### 표 만들기
 
 ```
 ## 표(Table)
 
-**`<table>`** 태그로 변환됩니다.헤더 셀을 구분할 때 3개 이상의 **`-`**(hyphen/dash) 기호가 필요합니다.헤더 셀을 구분하면서 **`:`**(Colons) 기호로 셀(열/칸) 안에 내용을 정렬할 수 있습니다.가장 좌측과 가장 우측에 있는 **`|`**(vertical bar) 기호는 생략 가능합니다.
+**`<table>`** 태그로 변환
+헤더 셀을 구분할 때 3개 이상의 **`-`**(hyphen/dash) 기호가 필요
+헤더 셀을 구분하면서 **`:`**(Colons) 기호로 셀(열/칸) 안에 내용을 정렬
+가장 좌측과 가장 우측에 있는 **`|`**(vertical bar) 기호는 생략 가능
 ```
 
 | 값         |                  의미                  |   기본값 |
@@ -247,31 +216,19 @@ But let's throw in atag.
 | `absolute` | 위치 상***부모*(조상)요소**를 기준으로 배치 |          |
 | `fixed`    |       **브라우저 창**을 기준으로 배치       |          |
 
+
+
+### 인용문(blockQuote)
+
 ```
-[제목 없음](<https://www.notion.so/ab9359439fbf4a4e878c354c82f8f53b>)
-
-## 인용문(BlockQuote)
-
-**`<blockquote>`** 태그로 변환됩니다.
+## 인용문(BlockQuote)  
+**(ctrl + shift +q)**
 ```
 
-인용문(blockQuote)
+**`<blockquote>`** 
 
 > 인용문  (ctrl + shift +q)
 >
 > > 중첩된 인용문(nested blockquote)
 > >
 > > > 중중첩된 인용문
-
-
-
-
-
-
-
-
-
-
-
-
-
