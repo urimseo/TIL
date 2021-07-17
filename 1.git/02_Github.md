@@ -33,7 +33,7 @@ origin  <https://github.com/urimseo/TIL.git> (fetch)
 origin  <https://github.com/urimseo/TIL.git> (push)
 ```
 
-> 잘못 add 한 경우 삭제하기$ git remote rm origi
+> 잘못 add 한 경우 삭제하기$ git remote rm origin
 
 
 
@@ -85,6 +85,8 @@ $ git clone 저장소URL
 
 
 
+
+
 ---
 
 ### Git 기존 저장소의 branch명 변경
@@ -104,7 +106,7 @@ $ git clone 저장소URL
    - 연필 아이콘을 클릭하여 main -> master 로 변경
    - `master` 입력하고 `Rename branch` 클릭하면 github 화면에서 저장소 정보가 master으로 변경된다.
 
-   ![](C:\Users\user\Pictures\tempsnip.png)
+   ![](../../../image_2.png)
 
 3. git bash 창에서 저장소 이름 변경하기
 
@@ -116,7 +118,7 @@ $ git clone 저장소URL
    git branch -u origin/master master
    ```
 
-![image-20210717010616935](C:\Users\user\AppData\Roaming\Typora\typora-user-images\image-20210717010616935.png)
+![image-20210717010616935](../../../image_3.png)
 
 
 
