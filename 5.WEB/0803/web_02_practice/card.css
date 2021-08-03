@@ -1,0 +1,104 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 1200px;
+  margin: 200px auto;
+}
+
+h4{
+  font-size: 20px;
+  font-family: Arial;
+  font-weight: bold;
+
+}
+p{
+  font-family:Arial;
+}
+
+/* .cafd-nav */
+h2{
+  font-size: 20px;
+  font-family: Arial;
+  text-align: center;
+  font-weight: bold;
+  background-color:forestgreen;
+  
+}
+
+.card{
+  /* 가운데 정렬 */
+  margin: auto;
+  width: 700px;
+  left:18px;
+  border: 2px dashed black;
+}
+
+
+.card-header{  
+  width: 100%;
+  padding: 18px;
+  font-size: 0px;
+  /* img 는 인라인이다.  인라인 요소 - 여백 존재, 여백 없애기 위해선 
+  1. 부모 요소의 font-size 0으로 설정, 
+   -> 가장 권장되는 방법!!!!*/ 
+}
+/* 이미지가 글자처럼 취급됨 */
+.card-img{
+  width: 100%;
+  height: 330px;
+  /* 
+2. display : block; -> 이미지 2개 이상이면 해결안됨. 밑으로만 붙기 때문.
+3. margin-bottom : -4px; => '0마진' 이라고 함. 
+
+*/
+}
+
+.card-header > .card-img-description{
+  box-sizing: border-box;
+  height: 70px;
+  width: 100%;
+  text-align: center;
+  /* padding : 8px; */
+  line-height: 35px;
+  color: white;
+  background-color: forestgreen;
+
+}
+
+.card-body{
+  width: 100%;
+  padding-top: 36px;
+  padding-right: 18px;
+  padding-left: 18px;
+}
+
+.card-body-title{
+  position: relative;
+}
+
+.card-body-title > p{
+  position:absolute;
+  top: 5px;
+  right: 0px;
+}
+
+.card-body-content{
+  background-color: rgb(209, 142, 142);
+  margin-top: 10px;
+  padding : 5px;
+}
+.card-footer{
+  margin-top:10px;
+  width: 100%;
+  background-color:rebeccapurple;
+  color: white;
+  text-align: right;
+  padding: 10px;
+
+}
+
+
