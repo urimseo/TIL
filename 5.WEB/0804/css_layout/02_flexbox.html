@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  <link rel="stylesheet" href="02_flexbox.css">
+  <title>Document</title>
+  <style>
+    /* 1. 정렬하고자 하는 부모 요소(flex container) 에 선언 */
+    .flex-container{
+      display: flex;
+      /* display: inline-flex; 
+      하늘색이 container임*/
+
+      /* 2. 메인축 방향 설정 */
+      flex-direction: row;
+      /* 역정렬 - 오른쪽에서 왼쪽으로*/
+      /* flex-direction: row-reverse; */
+
+    /* 메인축 y로 변경 */
+      /* flex-direction: column; */
+      /* 역정렬 - 아래에서 위로  */
+      /* flex-direction: column-reverse; */
+
+
+      /* 3. item들이 강제로 한 줄에 배치되게 할 것인지에 대한 여부 결정 */
+      /* default는 nowrap -> 강제로 한줄로 배치*/
+      /* flex-wrap:nowrap; */
+      /* 밖으로 나가지 않게 아래로 떨어뜨림 */
+      /* flex-wrap:wrap; */
+      /* 한줄 넘치면 위로(역으로) 정렬 */
+      /* flex-wrap: wrap-reverse; */
+
+      /* 4. flex-direction + flex-wrap의 shorthand */
+      /* flex-flow: column wrap; */
+      
+      /* 5. 메인축 정렬 */
+      /* default값이 flex-start임. */
+      /* justify-content: flex-start;   */
+      /* justify-content: center;   */
+      /* justify-content: flex-end; */
+      /* justify-content: space-between; */
+      /* 균등 좌우 분배 - 내부 간격은 외부 요소 너비의 2배  */
+      /* justify-content: space-around; */
+      /* justify-content: space-evenly; */
+
+      /* 6. 교차축 정렬   (현재 교차축은 y)*/
+      /* default가 stretch */
+      /* align-items: stretch; */
+      /* align-items: flex-start; */
+      /* align-items: center; */
+      /* align-items: flex-end; */
+      /* align-items: baseline; */
+    }
+
+  /* 7. 교차축 개별 정렬 */
+    .item1{
+      /* align-self: flex-start; */
+
+
+      /* order : 값이 작을 수록 앞으로 정렬  */
+      /* default 는 order가 0 */
+      order: 0;
+
+        /* flex grow: 메인축에서 남은 공간을 각 항목에게 분배.
+        남은 공간에 대한  분배!!!
+        남은 공간이 6 이면 
+        item1 -> 1 , item2 -> 2 item3 -> 3 */
+        /* 기본값 : 0 */
+      /* flex-grow: 1; */
+    }
+    .item2 {
+      /* align-self: center; */
+      
+      order: -1;
+      
+      /* flex-grow: 2; */
+    }
+
+    .item3{
+      /* align-self: flex-end; */
+      
+      /* 맨 뒤로 가는게 1!!!!!!! */
+      order: 1;
+      /* flex-grow: 3; */
+
+      /* 3만 오른쪽으로 정렬  */
+      margin-left: auto;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="base">
+    <h2>Flex</h2>
+    <hr>
+    <!-- 1. 부모에 flexbox 생성 -->
+    <div class="box flex-container"> 
+      <div class="item1">1</div>
+      <div class="item2">2</div>
+      <div class="item3">3</div>
+      <!-- <div class="item4">4</div>
+      <div class="item5">5</div>
+      <div class="item6">6</div>
+      <div class="item7">7</div>
+      <div class="item8">8</div>
+      <div class="item9">9</div>
+      <div class="item10">10</div>
+      <div class="item11">11</div>
+      <div class="item12">12</div>
+      <div class="item13">13</div> -->
+      <!-- <div class="item13">14</div> -->
+    </div>
+  </div>
+</body>
+
+</html>

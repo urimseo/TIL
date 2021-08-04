@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box1 {
+      width: 150px;
+      height: 150px;
+      border: 1px solid black;
+      background-color: crimson;
+      color: white;
+      text-align: center;
+      line-height: 150px;
+      /* z-index: 100;   */
+
+    }
+
+    .box2 {
+      width: 300px;
+      height: 150px;
+      border: 1px solid black;
+      background-color: blue;
+      color: white;
+      /* 가운데 정렬?? - 화면에서 보이는 기준 */
+      text-align: center;
+      line-height: 150px;
+
+
+      /* position: absolute;
+      z-index: 100; */
+      
+    }
+
+    .left{
+      float: left;
+    }
+    
+    /* 의사 요소, 가상의 요소 만들기
+    파란 박스가 위로 올라오지 않게 막는 역할 */
+    .clearfix::after{
+      content: "";
+      display:  block;
+      clear: both;
+
+    }
+
+  </style>
+</head>
+<body>
+  <!-- float된 요소에 부모를 하나 만든다 <div class="clearfix"></div> -->
+  <div class="clearfix">
+    <!-- 첫번째 박스를 왼쪽으로 float -->
+    <div class="box1 left">div</div>
+  </div>
+  <!-- 가상의 요소 -->
+  <div class="box2">div</div>
+</body>
+</html>
