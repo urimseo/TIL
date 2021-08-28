@@ -68,7 +68,7 @@ def f4(i, j , N, c): #c : 지나온 칸의 개수
         for di, dj in [(0, 1), (1, 0), (0, -1), (-1, 0)]:  # 4방향 탐색
             ni, nj = i + di, j + dj
             if 0 <= ni < N and 0 <= nj < N and maze[ni][nj] == 0:  # and visited[ni][nj] = 0
-                f3(ni, nj, N, c+1)  # 지나갈때마다 지나온 칸 +1 (전체 경로의 길이 알 수 있음)
+                f4(ni, nj, N, c+1)  # 지나갈때마다 지나온 칸 +1 (전체 경로의 길이 알 수 있음)
         maze[i][j] = 0  # 다른 경로에서의 i, j 진입은 허용
 
 
