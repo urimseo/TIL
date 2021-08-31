@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<body>
+  <h1>안녕하세요! 저는 {{ info.name }} 입니다.  </h1>
+  <p>제가 좋아하는 음식은 {{ foods }} 입니다.</p>
+  <p>{{foods.0}}을 제일 좋아함</p>
+</body>
+{% endblock content %}
+
+

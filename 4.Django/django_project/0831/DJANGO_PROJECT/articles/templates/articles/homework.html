@@ -1,0 +1,68 @@
+
+
+{% extends 'base.html' %}
+
+
+{% block content %}
+<br>
+<h1>1. 첫번째 반복문일때와 아닐때 조건문으로 분기 처리 </h1>
+{% if forloop.first %}
+	<p>첫 번째 반복문 입니다.</p>
+{% else %}
+	<p> 첫 번째 반복문이 아닙니다.</p>
+{% endif %}
+<hr>
+<h1>menus 리스트 반복문 출력</h1>
+{% for menu in menus %}    
+<p>{{ menu }}</p>
+{% endfor %} <hr>
+
+<h1>post리스트 반복문으로 0번부터 출력 </h1>
+{% for post in posts %}
+	<p>{{ forloop.counter0}}번 글 : {{ post }}</p>
+{% endfor %} <hr>
+
+<h1>user 리스트 비어있으면..</h1>
+{% for user in users %}
+	<p> {{ user }} </p>
+{% empty %}
+	<p>현재 가입한 유저가 없습니다.</p>
+{% endfor %} <hr>
+
+<h1>2. 첫번째 반복문일때와 아닐때 조건문으로 분기 처리 </h1>
+{% if forloop.first %}
+	<p>첫 번째 반복문 입니다.</p>
+{% else %}
+	<p> 첫 번째 반복문이 아닙니다.</p>
+{% endif %}
+
+<hr>
+<h1>출력된 결과가 주석과 같아지도록 </h1>
+<p> {{ 'hello'|length }}</p>
+<p> {{ 'my name is tom'|title }}<p/>
+<!-- 5 -->
+<!-- My Name Is Tom -->
+<hr>
+
+<h1>datetime 나타내기</h1>
+<p>{{ today|date:"Y년 m월 d일 (M) A h:i"}}</p>
+
+ {% comment %} Y년 m월 d일 (M) A h:i {% endcomment %}
+<hr>
+
+<form action="/create/", method ="">
+    <label for="title">Title : </label>
+    <input type="text", name="title" id="title">
+    <label for="content">Content : </label>
+    <input type="text", name="content" id="content">
+    <label for="my-site">My-Site : </label>
+    <input type="text", name="my-site" id="my-site">
+    <input type="submit">
+</form>
+
+
+
+
+{% endblock content %}
+
+
