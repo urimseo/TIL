@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>INDEX</h1>
+  <hr>
+  {% comment %} <h2>{{ articles }}</h2>  -> 이건 queryset으로 나오기 떄문에 for문으로 풀어줘야함. {% endcomment %}
+  {% for article in articles %}
+    <p>제목 : {{ article.title }}</p>
+    <p>내용 : {{ article.content }}</p>
+    <hr>
+  {% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
