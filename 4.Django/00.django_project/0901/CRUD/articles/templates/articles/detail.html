@@ -1,19 +1,51 @@
 {% extends 'base.html' %}
+  {% block title %}
+  📋DETAIL
+  {% endblock title %}
 
 {% block content  %}
-<h2 class ='text-center'>DETAIL</h2>
-<h3>{{article.pk}} 번째 글</h3>
+<h1>DETAIL</h1>
 <hr>
-<p>제목: {{article.title }} </p>
-<p>내용: {{ article.content }}</p>
-<p>작성 시간: {{ article.created_at }}</p>
-<p>수정 시간: {{ article.updated_at }} </p>
-<hr>
-<form action="{% url 'articles:delete' article.pk %}" method="POST">
+<h2>{{article.title }} </h2>
+<p>{{ article.content }}</p>
+<p>작성일: {{ article.created_at }}</p>
+<p>수정일: {{ article.updated_at }} </p>
+<div class = "d-flex ">
+    <form action=" {% url 'articles:edit' article.pk%}">
     {% csrf_token %}
-    <button class ="btn btn-danger">DELETE</button>
-</form>
+    <button class="btn btn-link text-decoration-none d-inline px-0">EDIT</button>
+  </form>
+  <form action="{% url 'articles:delete' article.pk %}" method="POST">
+    {% csrf_token %}
+    <button class="btn btn-link text-decoration-none d-inline">DELETE</button>
+  </form>
+</div>
 
 <a href= "{% url 'articles:index' %}">BACK</a>
-
 {% endblock  %}
+
+
+
+
+
+
+
+
+
+
+{% comment %} 페이지 이동 -> a , 데이터 입력 -> form  {% endcomment %}
+{% comment %} <a href="{% url 'articles:delete' article.pk%}" method="POST">DELETE</a> <br> {% endcomment %}
+{% comment %} <form action="{% url 'articles:edit' article.pk %}" method="POST">
+
+
+
+    {% csrf_token %}    
+    
+    <label for="title">TITLE: </label>
+    <input type="text" id="title" name="title" value="{{ article.title }}"> <br>
+    <label for="content">CONTENT: </label>
+    <textarea name="content" id="content" cols="30" rows="10" >{{article.content}}</textarea> <br>
+    <input type="submit" value ='수정'>
+
+    <button class ="btn btn-primary">EDIT</button>
+</form> {% endcomment %}

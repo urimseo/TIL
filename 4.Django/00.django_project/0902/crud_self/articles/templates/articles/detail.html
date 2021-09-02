@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>DETAIL</h1>
+<p>제목: {{ article.title }}</p>
+<p>내용: {{ article.content }}</p>
+<p>작성일: {{ article.created }}</p>
+<p>수정일: {{ article.updated }}</p>
+<form action="{% url 'articles:delete' article.pk%}" method ="POST">
+    {% csrf_token %}
+    <button>DELETE</button>
+</form>
+{% comment %} 왜 edit은 method post 안붙이는거임? {% endcomment %}
+<form action="{% url 'articles:edit' article.pk%}" >
+    {% csrf_token %}
+    <button>EDIT</button>
+</form>
+<a href="{% url 'articles:index' %}">INDEX</a>
+{% endblock content %}

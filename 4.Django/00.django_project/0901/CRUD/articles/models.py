@@ -10,7 +10,8 @@ class Article(models.Model):
 
     def __str__(self):
         return self.title
+        # return f'[{self.id}번] 제목: {self.title} / {self.content}'  #admin 페이지
 
-    def summary(self):
-        return self.content[:100]
+    # def summary(self):
+    #     return self.content[:100]
     

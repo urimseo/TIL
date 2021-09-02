@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>NEW</h1>
+<form action=" {% url 'articles:create' %}" method="POST">
+    {% csrf_token %}  
+    {% comment %} post method 로 넘기면 무조건 csrftoken 넘겨주기!! 필수  {% endcomment %}
+    <label for="title">TITLE: </label>
+    <input type="text", id='title', name="title">  <br>
+    {% comment %} <label>의 for -  <input>id 이름을 동일하게!연결해야한다!! + 같은 name 사용하기
+    여기서 name이 def create에서 get('name')의 인자로 들어가기 때문. 
+    form 에서 사용자가 게시글 추가에 대한 요청을 서버에 보낸다.
+    request.GET이라는 꾸러미 안에서 
+    여기에 있는 name 이 def create  에 연결되는것임.!!
+
+    {% endcomment %}
+    <label for="content">CONTENT: </label>
+    <textarea name="content" id="content" cols="30" rows="10"></textarea> <br>
+    <input type="submit" value ="작성">
+    
+</form>
+<a href=" {% url 'articles:index'%} ">[메인 페이지로 이동]</a>
+
+{% endblock %}
+
+
+
+
