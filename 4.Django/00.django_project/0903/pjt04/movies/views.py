@@ -10,7 +10,6 @@ def index(request):
 
 
 def new(request):
-
     return render(request, 'movies/new.html')
 
 def create(request):
