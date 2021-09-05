@@ -54,7 +54,7 @@
 
    
 
-6. pip list 확인하기
+6. 설치 확인하기
 
    `pip list`
 
@@ -84,7 +84,38 @@
 
 ---
 
+**프로젝트 구조** 
 
+- `__init__.py`
+
+  - 빈 파일
+  - Python에게 이 디렉토리를 하나의 Python 패키지로 다루도록 지시
+
+- `settings.py`
+
+  - 웹사이트의 모든 설정을 포함
+  - 우리가 만드는 어떤 application이라도 등록이 되는 곳이며, static files의 위치, database 세부 설정 등이 작성
+
+- `urls.py`
+
+  - 사이트의 url와 view의 연결을 지정
+
+- `wsgi.py`
+
+  - Web Server Gateway Interface
+  - 장고 어플리케이션이 웹서버와 연결 및 소통하는 것을 도움
+
+- `asgi.py`
+
+  - new in 3.0
+
+  - Asynchronous Server Gateway Interface
+
+  - 장고 어플리케이션이 비동기식 웹 서버와 연결 및 소통하는 것을 도움
+
+    
+
+---
 
 ## 2. Project & Application 초기 세팅
 
@@ -121,13 +152,33 @@ INSTALLED_APPS = [
 ]
 ```
 
-3. 언어및 시간 변경 
+3. 추가설정
 
-   > `settings.py`에서 `LANGUAGE_CODE`를 `ko-kr`로 변경 후 저장. 변경된 언어는 서버를 재실행하면 반영된다. 
+   - 언어및 시간 변경 
 
-   `LANGUAGE_CODE = 'ko-kr'`  
+   > `settings.py`에서 `LANGUAGE_CODE`, `TIME_ZONE` 변경 후 저장. 변경사항은 서버를 재실행하면 반영된다. 
 
-   `TIME_ZONE = 'Asia/Seoul'`
+   1. `LANGUAGE_CODE = 'ko-kr'`  
+      - 모든 사용자에게 제공되는 번역을 결정
+      - 이 설정이 적용되려면 USE_118N이 활성화되어 있어야 함
+
+   2. `TIME_ZONE = 'Asia/Seoul'`
+      - 데이터 베이스 연결의 시간대를 나타내는 문자열 지정 
+      - USE_TZ가 True 이고 이 옵션이 설정된 경우 데이터 베이스에서 날짜 시간을 읽으면, UTC 대신 새로 설정한 시간대의 인식 날짜 &시간이 반환됨
+      - USE_TZ이 False인 상태로 이 값을 설정하는 것은 error가 발생하므로 주의
+
+   - USE_118N
+     - Django의 번역 시스템을 활성화해야 하는지 여부를 지정
+   - USE_L10N
+     - 데이터의 지역화 된 형식(localized formating)을 기본적으로 활성화할지 여부를 지정
+     - True일 경우, Django는 현재 locale의 혀식을 사용하여 숫자와 날짜를 표시
+
+   - USE_TZ
+
+     - datetimes가 기본적으로 시간대를 인식하는지 여부를 지정
+     - True일 경우 Django는 내부적으로 시간대 인식 날짜 / 시간을 사용 
+
+     
 
 ## 3. 요청과 응답 (MTV)
 
@@ -162,8 +213,8 @@ urlpatterns = [
 ```python
 from django.shortcuts import render
 
-# Create your views here.
-def index(request):  
+# articles/view.py
+def index(request):  # render,redirect의 첫번째 인자는 반드시 request
     return render(request, 'index.html')    
 
 # 'index.html'이라는 상대주소로도 참고가 가능하다. 
@@ -178,6 +229,7 @@ def index(request):
 > Template 파일 경로의 기본 값은 `app`폴더 안의 `templates` 폴더로 지정되어있음. 
 
 ```html
+<!-- articles/templates/index.html -->
 <h1>만나서 반가워요!</h1>
 ```
 
