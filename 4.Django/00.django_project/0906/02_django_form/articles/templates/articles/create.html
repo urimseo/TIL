@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>CREATE</h1>
+  <form action="{% url 'articles:create' %}" method="POST">
+    {% csrf_token %}
+    {# form rendering options -> as_p, as_ul, as_table #}
+    {{ form.as_p }}
+    <input type="submit">
+  </form>
+  <hr>
+  <a href="{% url 'articles:index' %}">[back]</a>
+{% endblock  %}
+
+
+
+ {# 여기를 form으로 변경#}
+    {% comment %} <label for="title">Title: </label>
+    <input type="text" name="title" id="title"><br>
+    <label for="content">Content: </label>
+    <textarea name="content" id="content" cols="30" rows="5"></textarea><br> {% endcomment %}
