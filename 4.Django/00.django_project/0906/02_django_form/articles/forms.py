@@ -24,27 +24,27 @@ from .models import Article
 #     region = forms.ChoiceField(choices=REGION_CHOICES, widget=forms.Select)
 
 class ArticleForm(forms.ModelForm):
-    # title = forms.CharField(
-    #     label='제목', # 원래는 title로 되어있음. 왜 들어있지.?? 어디서 설정한거지..?  model에서 설정한거..? 그럼 created랑 update는 어디갔어 메타데이터로 Article 다 가져왔자나...하
-    #     widget=forms.TextInput(
-    #         attrs={ # attribute 속성값은 딕셔너리로! 엔터 위치 조심 
-    #             'class' : 'my-title',
-    #             'placeholder' : 'Enter the title',
-    #             'max-length' : 10, 
-    #         }
-    #     ),
-    # )
-    # content = forms.CharField(
-    #     label = '내용',
-    #     widget=forms.Textarea(
-    #         attrs={
-    #             'class' : 'my_content',
-    #             'placeholder' : 'Enter the content',
-    #             'rows' : 5,
-    #             'cols' : 50,
-    #         }
-    #     )
-    # )
+    title = forms.CharField(
+        label='제목', # 원래는 title로 되어있음. 왜 들어있지.?? 어디서 설정한거지..?  model에서 설정한거..? 그럼 created랑 update는 어디갔어 메타데이터로 Article 다 가져왔자나...하
+        widget=forms.TextInput(
+            attrs={ # attribute 속성값은 딕셔너리로! 엔터 위치 조심 
+                'class' : 'my-title',
+                'placeholder' : 'Enter the title',
+                'max-length' : 10, 
+            }
+        ),
+    )
+    content = forms.CharField(
+        label = '내용',
+        widget=forms.Textarea(
+            attrs={
+                'class' : 'my_content',
+                'placeholder' : 'Enter the content',
+                'rows' : 5,
+                'cols' : 50,
+            }
+        )
+    )
     class Meta:
         model =Article
         # fields = ('title', 'content')
