@@ -5,7 +5,15 @@
 <h1>CREATE</h1>
     <form action="{% url 'articles:create' %}"method ="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form.as_p }}
+        {% for field in form %}
+            {% if field.labeltag is False %}
+                {{field.label_tag}}
+            {% else %}
+                {{ field.label_tag }}
+                {{ field }}
+            {% endif %} 
+        {% endfor %} <br>
+        {{ form }}
         <input type="submit" value="제출">
     </form>
     <a href="{% url 'articles:index' %}">[back]</a>

@@ -5,6 +5,7 @@ from .models import Article
 
 
 class ArticleForm(forms.ModelForm):
+
     title = forms.CharField(
         label='제목',
         widget=forms.TextInput(
@@ -25,6 +26,13 @@ class ArticleForm(forms.ModelForm):
 
         )
     )
+    image = forms.ImageField(
+        label = 'Image'
+    )
+    # image2 = forms.ImageField(
+    #     label = ''
+    # )
+
     class Meta:
         model = Article
         fields = '__all__'

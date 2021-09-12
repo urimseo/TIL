@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.views.decorators.http import require_http_methods, require_safe, require_POST
 from .models import Article
 from .forms import ArticleForm
-# Create your views here.
+
+@require_safe
 def index(request):
     articles = Article.objects.all()
     context = {
@@ -9,6 +11,7 @@ def index(request):
     }
     return render(request, 'articles/index.html', context)
 
+@require_http_methods(['GET','POST'])
 def create(request):
     if request.method =="POST":
         form = ArticleForm(request.POST, request.FILES)
@@ -22,6 +25,7 @@ def create(request):
     }
     return render(request, 'articles/create.html', context)
     
+@require_safe
 def detail(request, pk):
     article = Article.objects.get(pk=pk)
     context = {
@@ -29,11 +33,13 @@ def detail(request, pk):
     }
     return render(request, 'articles/detail.html', context)
 
+@require_POST
 def delete(request, pk):
     article = get_object_or_404(Article, pk=pk)
     article.delete()
     return redirect('articles:index')
 
+@require_http_methods(['GET', 'POST'])
 def update(request, pk):
     article = get_object_or_404(Article, pk=pk)
     if request.method == 'POST':
