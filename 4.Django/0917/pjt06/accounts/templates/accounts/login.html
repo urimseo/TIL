@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+
+{% block content %}
+    <h1>Login</h1>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <input class="btn btn-success" type="submit" value="로그인">
+    </form>
+    <hr>
+    <a href="{% url 'community:index' %}" class="btn btn-primary">Back</a>
+
+{% endblock content %}

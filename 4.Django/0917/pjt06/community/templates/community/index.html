@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class="fw-bold text-success">Community</h1>
+    <hr>
+    {% for commu in community %}
+        <h3 class="fw-bold"><a href="{% url 'community:detail' commu.pk%}" class="text-decoration-none text-dark">{{ commu.movie_title }}</a></h3>
+            <br>
+        <h4 class="text-secondary">{{ commu.title }}</h4>
+        
+        <hr>
+    {% endfor %}
+
+{% endblock content %}
+

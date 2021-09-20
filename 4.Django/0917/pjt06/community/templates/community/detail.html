@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class="fw-bold text-center">Detail</h1> <hr>
+    <h3 class="fw-bold">{{ commu.movie_title }}</h3>
+    <p class="text-secondary">평점: {{ commu.rank }} / 10</p>
+    <hr>
+    <h5>리뷰 제목: {{ commu.title }}</h5>
+
+    <p>리뷰 내용: {{ commu.content }}</p>
+
+    <div class="d-flex">
+        <a href="{% url 'community:update' commu.pk %}">
+            <button class="btn btn-warning">Update</button>
+        </a>
+        <form action="{% url 'community:delete' commu.pk %}" method="POST">
+            {% csrf_token %}
+            <button class="btn btn-danger">Delete</button>
+        </form>
+        <a href="{% url 'community:index' %}">
+            <button class="btn btn-primary">Back</button>
+        </a>
+    </div>
+{% endblock content %}
+
+
