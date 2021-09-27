@@ -1,3 +1,5 @@
+from accounts import admin
+from django.contrib.auth import login
 from django.urls import path
 from . import views
 
@@ -11,3 +13,4 @@ urlpatterns = [
     path('update/', views.update, name='update'),
     path('password/', views.change_password, name='change_password'),
 ]
+

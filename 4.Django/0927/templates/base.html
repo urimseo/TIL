@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  {% if request.user.is_authenticated %}
+    <h3>{{ user.username }}</h3>
+    <a href="{% url 'reservations:index' %}">Index</a>
+    <a href="{% url 'reservations:create' %}">Create</a>
+    <form action="{% url 'accounts:logout' %}" method="POST">
+      {% csrf_token %}
+      <button>logout</button>
+    </form>
+  {% else %}
+    <a href="{% url 'accounts:login' %}">Login</a>
+    <a href="{% url 'accounts:signup' %}">Signup</a>
+  {% endif %}
+  <hr>
+  <!-- Q4-3 -->
+  <img src="../../static/ssafy.png" alt="ssafy.png" width='20rem'>
+  {# 최상단의 경로에 지정되어 있기 때문에 ..으로 앱을 벗어난 후에 경로 탐색 할 수 있도록 #}
+  <span>SSAFY EXAM</span>
+  <hr>
+  {% block content %}
+  {% endblock %}
+</body>
+</html>
+
+
+

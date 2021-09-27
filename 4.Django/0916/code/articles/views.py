@@ -17,11 +17,11 @@ def index(request):
     else: # 로그인 안했을 때 
         visits_num = 0
 
-    articles = Article.objects.order_by('-pk')
+    articles = Article.objects.order_by('-pk') # 최근 작성된 게시물이 위에 올 수 있도록 역정렬 
     
     context = {
         'articles': articles,
-        'visits_num' : visits_num,
+        'visits_num' : visits_num,  # 이건 그냥 몇번 방문했는지 보여주는 것 없어도 됨. 
     }
     return render(request, 'articles/index.html', context)
 
@@ -29,7 +29,7 @@ def index(request):
 @require_http_methods(['GET', 'POST'])
 def create(request):
     if request.method == 'POST':
-        form = ArticleForm(data=request.POST)
+        form = ArticleForm(data=request.POST) # data 없어도 됨 어차피 request.POST 가 첫번째 위치인자이기 때문. 
         if form.is_valid():
             article = form.save()
             return redirect('articles:detail', article.pk)

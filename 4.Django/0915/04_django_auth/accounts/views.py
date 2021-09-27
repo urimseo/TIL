@@ -57,6 +57,7 @@ def signup(request):
     }
     return render(request, 'accounts/signup.html', context)
 
+
 @require_POST
 def delete(request):
     if request.user.is_authenticated:
