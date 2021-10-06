@@ -86,10 +86,12 @@
 
    ```python
    # orm
+   User.objects.all()
    ```
 
       ```sql
    -- sql
+   SELECT * FROM users_user;
       ```
 
 2. user 레코드 생성

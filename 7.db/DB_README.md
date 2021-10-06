@@ -160,6 +160,8 @@ SELECT * FROM examples;
 
 -- 컬럼과 필드를 표처럼 깔끔하게 나타내줌
 .mode column
+
+--> 이 다음에 SELECT * FROM exampels; 
 ```
 
 
@@ -168,10 +170,50 @@ SELECT * FROM examples;
 
 > 데이터베이스에서 테이블 생성
 
+```sqlite
+CREATE TABEL classmates(id INTEGER PRIMARY KEY, name TEXT);
+```
 
+- id는 int형으로 pk값으로 지정, 이름은 TEXT로 
+
+> 특정 테이블의 schema 조회
+
+```sqlite
+.schema classmates 
+```
+
+- 방금전 생성한 classmates 테이블의 스키마 
+
+  -> CREATE TABEL classmates(id INTEGER PRIMARY KEY, name TEXT); 
 
 
 
 4. DROP TABLE
 
 > 데이터베이스에서 테이블 제거 
+
+```sqlite
+DROP TABLE classmates;
+```
+
+
+
+## 5. CRUD
+
+### 1. CREATE
+
+#### 1.1 INSERT
+
+> 테이블에 단일 행 삽입 (inserting a single row into a table)
+
+```sqlite
+INSERT INTO 테이블이름(컬럼1, 컬럼2...) VALUES (값1, 값2,...);
+```
+
+- 특정 테이블에 레코드(행)을 삽입(생성)
+
+  ```sqlite
+  INSERT INTO classmates (name, age) VALUES ('홍길동', 23);
+  ```
+
+
