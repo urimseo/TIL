@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Article
-from .forms import ArticleForm
-
+from .models import Article, Comment
+from .forms import ArticleForm, CommentForm
+from django.views.decorators.http import require_http_methods, require_POST, require_safe
 # Create your views here.
 def index(request):
     articles = Article.objects.order_by('-pk')
@@ -27,8 +27,12 @@ def create(request):
 
 def detail(request, pk):
     article = get_object_or_404(Article, pk=pk)
+    comment_form = CommentForm()
+    comments = article.comment_set.all()
     context = {
         'article': article,
+        'coment_form' : comment_form,
+        'comments' : comments,
     }
     return render(request, 'articles/detail.html', context)
 
@@ -53,3 +57,23 @@ def update(request, pk):
         'article': article,
     }
     return render(request, 'articles/update.html', context)
+
+
+
+def comments_create(request, pk):
+    # if request.user.is_authenticated:
+    article = get_object_or_404(Article, pk=pk)
+    comment_form = CommentForm(request.POST)
+    if comment_form.is_valid():
+        comment = comment_form.save(commit=False)
+        comment.article = article
+        comment.save()
+    return redirect('articles:detail', article.pk)
+    # return redirect('accounts:login')
+
+
+def comments_delete(request, article_pk, comment_pk):
+    # if request.user.is_authenticated:
+    comment =get_object_or_404(Comment, pk=comment_pk)
+    comment.delete()
+    return redirect('articles:detail', article_pk)

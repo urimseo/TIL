@@ -18,6 +18,7 @@
     </form>
   {% comment %} {% endif %} {% endcomment %}
   <a href="{% url 'articles:index' %}">[back]</a>
+
   <hr>
   <h4>댓글 목록</h4>
   {% if comments %}
@@ -26,7 +27,7 @@
   <ul>
     {% for comment in comments %}
       <li>
-        {{ comment.uer }} - {{ comment.content}}
+        {{ comment.uer }} - {{ comment.content }}
         {% if user == comment.user %}
           <form action="{% url 'articles:comments_delete' article.pk comment.pk %}" method = "POST" class="d-inline">
             {% csrf_token %}

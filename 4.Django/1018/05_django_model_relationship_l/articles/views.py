@@ -83,7 +83,7 @@ def update(request, pk):
 
 @require_POST
 def comments_create(request, pk):
-    if request.users.is_authenticated:
+    if request.user.is_authenticated:
         article = get_object_or_404(Article, pk=pk)
         comment_form = CommentForm(request.POST)
         if comment_form.is_valid():
