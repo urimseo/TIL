@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>{{ person.username }}의 프로필 페이지 </h1>
+<div>
+    팔로잉 수: {{ person.followings.all|length}} <br>
+    팔로워 수: {{ person.followers.all|length}}
+</div>
+{% if user != person %}
+    <div>
+        <form action="{% url "accounts:follow" person.pk %}" method="POST">
+            {% csrf_token %}
+            {% if user in person.followers.all %}
+                <input type="submit" value="언팔로우">
+            {% else %}
+                <input type="submit" value="팔로우">
+            {% endif %}
+        </form>
+    </div>
+{% endif %}
+<hr>
+
+
+
+
+{% endblock content %}
