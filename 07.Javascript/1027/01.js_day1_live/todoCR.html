@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="#">
+        <input type="text">
+        <button>Add</button>
+    </form>
+    <ul>
+    
+    </ul>
+
+    <script>
+        // form태그 선택
+        const form = document.querySelector('form')
+        //submit 이벤트가 발생했을 때!
+        
+        // 함수 밖으로 빼기 
+        const addTodo = function(event){
+            event.preventDefault()
+
+            console.log(event)
+
+            // 1. input 선택 및 vaule 값 선택
+            const input = document.querySelector('input')
+            const content = input.value // 값 선택
+            
+            // 만약 양쪽 공백을 제거해도 True라면 -> 공백이 아니라면 
+            // trim -> python의 strip과 같음  양쪽 공백 제거하기 
+            if (content.trim()) {
+                // 자식태그     
+                const liTag = document.createElement('li')
+                liTag.innerText = input.value // submit은 value에 들어있음.input이랑 다르다. 
+                
+                // 부모태그 선택 후 append
+                const ulTag = document.querySelector('ul')
+                ulTag.appendChild(liTag)
+
+            } else { // 공백을 제거했는데 빈 문자열이라면 -> 공백임. 
+                alert('할 일을 입력해주세요!')
+            }
+            //submit 한 이후에 input에 작성한 글 없애기
+            event.target.reset()
+        }
+        
+        form.addEventListener('submit', addTodo)
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>preventDefault</title>
+	<style>
+    body {
+      height: 10000px;
+    }
+  </style>
+</head>
+<body>
+  <!-- 1. checkbox -->
+  <input type="checkbox" id="my-checkbox">
+  <hr>
+
+  <!-- 2. submit -->
+  <form action="/articles/" id="my-form">
+    <input type="text">
+    <input type="submit" value="제출!">
+  </form>
+  <hr>
+
+  <!-- 3. link -->
+  <a href="https://google.com/" target="_blank" id="my-link">GoToGoogle</a>
+  <hr>
+  
+  <script>
+    // 1
+    const checkBox = document.querySelector('#my-checkbox')
+    
+    checkBox.addEventListener('click', function (event) {
+      event.preventDefault()
+      console.log(event)
+    })
+
+    // 2
+    const formTag = document.querySelector('#my-form')
+
+    formTag.addEventListener('submit', function (event) { // formTag에 submit 이벤트가 발생하면
+      console.log(event) // 이벤트 출력하고
+      event.preventDefault() // 이벤트 취소하고
+      event.target.reset() // 이벤트에 있는 내용들 reset하기 
+    })
+
+    // 3
+    const aTag = document.querySelector('#my-link')
+
+    aTag.addEventListener('click', function (event) { // aTag클릭하면 
+      console.log(event) // 이벤트 로그출력
+      event.preventDefault() // 이벤트 취소 
+      // 이벤트 동작 막고 다른 기능을 하는 함수를 작성
+      // 이 경우 a태그의 기본 동작은 막고 속성은 유지하면서 다른 동작을 할수 있게 사용 가능하다
+      
+    })
+
+    // 4
+    document.addEventListener('scroll', function (event) {
+      console.log(event)
+      event.preventDefault()
+    })
+  </script>
+</body>
+</html>

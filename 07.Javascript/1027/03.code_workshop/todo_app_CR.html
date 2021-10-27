@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="#">
+        <input type="text">
+        <button class="submit">Add</button>
+        <ul>
+
+        </ul>
+    </form>
+    <script>
+        // form 태그 선택 -> 여기서 일어나는 일에 대해 정의할것이다. 
+        const form = document.querySelector('form')
+
+        //이벤트 발생했을때!! 함수 작성
+        const Todo = function(event){
+            event.preventDefault() // form 기본동작 취소 - 밑에 작성한 동작들이 실행될 수 있도록!
+
+            // 0. input 이벤트가 발생할 경우! 니까 먼저 input 선택.
+            const input = document.querySelector('input')
+            // input에 들어가는 값 선택 
+            const text = input.value
+            
+            // 공백이 아니라면! 정상작동
+            if(text.trim()){
+                // 1. 자식태그 생성
+                const liTag = document.createElement('li')
+                // 자식태그에 들어갈 값 지정하기 
+                liTag.innerText = text
+
+                 // 2. 부모태그 선택
+                const ulTag = document.querySelector('ul')
+                // 부모태그에 자식태그 추가 
+                ulTag.appendChild(liTag)
+            } else { // 공백이라면! -> 값이 입력 안됐으므로 동작x
+                alert('값을 입력해주세요')
+            }
+            // submit 이후 text 삭제되도록!    
+            event.target.reset()
+
+        }
+        form.addEventListener('submit', Todo)
+
+    </script>
+</body>
+</html>

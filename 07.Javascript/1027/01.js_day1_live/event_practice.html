@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button type="button">버튼</button>
+</body>
+    <script>
+        const btn = document.querySelector('button')
+        // function()안에 event를 넣지 않아도 똑같이 동작하는데 왜그런거임
+        btn.addEventListener('click', function(event){
+            console.log(event)
+            alert('버튼이 눌렸다!!')
+        })
+
+
+    </script>
+</html>

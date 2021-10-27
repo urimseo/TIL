@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .txt-blue {color : blue}
+        .txt-red {color:red}
+    </style>
+</head>
+<body>
+    <ul class="list">
+        <li class="txt-blue">1번</li>
+        <li class="txt-blue">2번</li>
+        <li class="txt-blue">3번</li>
+        <li class="txt-blue">4번</li>
+        <li class="txt-blue">5번</li>
+        <li class="txt-blue">6번</li>
+    </ul>
+
+
+    <script>
+        // const $li = document.getElementsByClassName('txt-blue')
+        // for (let i = 0; i< $li.length; i++){
+        //     console.log($li[i])
+        //     $li[i].className = 'txt-red'
+        // }
+        // 이건 즉시 txt-red로 바꿈과 동시에 txt-blue의 목록에서 빠진다. 바로바로 다시 txt-blue를 읽어서
+        // 퐁당퐁당된다. 
+
+        const $li = document.querySelectorAll('.txt-blue')
+        for (let i = 0; i< $li.length; i++){
+            console.log($li[i])
+            $li[i].className = 'txt-red'
+        }
+        // 처음 한번 스캔하고 그대로 for문 돌아서 이건성공 
+
+    </script>
+</body>
+</html>
