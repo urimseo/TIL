@@ -225,7 +225,10 @@ INSTALLED_APPS =[
 #### 2.  url
 
 ```python
-from django import 
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('api/v1/', include('articles.urls'))
+]
 ```
 
 #### 3. ModelSerializer
@@ -234,7 +237,21 @@ from django import
 - 이 과정은 Django에서 Model의 필드를 설정하는 것과 동일하다. 
 
 ```python
-from 
+class Article(models.Model):
+    title = models.CharField(max_length=100)
+    content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+class Comment(models.Model):
+    article = models.ForeignKey(Article, on_delete=models.CASCADE) # , related_name='comments'
+    content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    # 댓글의 내용을 출력하기 위함 
+    def __str__(self):
+        return self.content
 ```
 
 #### 4. view
@@ -258,7 +275,24 @@ from
 
 > 전체 글 조회 
 
-```
+```python
+@api_view(['GET'])
+def comment_list(request):
+    comments = get_list_or_404(Comment)
+    serializer = CommentSerializer(comments, many=True)
+    return Response(serializer.data)@api_view(['GET', 'POST'])
+def article_list(request):
+    if request.method == 'GET':
+        articles = get_list_or_404(Article)           # Queryset 이 들어있음. db에 있는 데이터를 python에 쓰기 위해서 담는 것이 queryset
+        serializer = ArticleListSerializer(articles, many=True)  # Json으로 만듬 (Serialization 하기) # 여러개면 무조건 many=True           
+        return Response(serializer.data)
+    elif request.method == 'POST':
+        serializer = ArticleSerializer(data=request.data)
+        if serializer.is_valid(raise_exception=True):  # raise_exception=True는 기본적으로 문제가 있을 경우 HTTP 400 코드를 응답한다. 
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED) # 생성성공 - 201, 조회성공 - 200
+        # return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST) # 400 - 생성안됨
+
 ```
 
 - api_view decrator
