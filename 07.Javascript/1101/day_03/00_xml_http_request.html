@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  const request = new XMLHttpRequest()
+  const URL = 'https://jsonplaceholder.typicode.com/todos/1/'
+
+  request.open('GET', URL)  // GET 요청을 URL 로 보냄 
+  request.send() // 요청
+
+  const todo = request.response // 응답 데이터 저장
+  console.log(`data:${todo}`) //  출력  -> 응답 데이터를 기다리지않고 바로 출력해서 아무것도 나오지 않음 
+  </script>
+</body>
+</html>

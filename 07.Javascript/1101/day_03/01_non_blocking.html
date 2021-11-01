@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 1. setTimeout
+    const sleep = function(){
+      console.log('잘 잤다!!')
+    }
+
+    console.log('이제 자야지!')
+    setTimeout(sleep, 3000) // WebAPI 로 보내짐. 거기서 3초가 보내지고 -> taskque에서 대기함. 메인 쓰레드가 빌 때 까지. -> eventroof가 콜스텍이랑 큐를 감시함 
+    // 메인 콜스택이 비었으면 대기자를 stack에 들어감. 그 이후에 3초 뒤에 출력..
+    console.log('학교 가자!!!') //  이건 별도로 javascripts 에서 돌아가 ㅁ
+
+
+    // 2. XMLHttpRequest
+
+    const request = new XMLHttpRequest()
+    const URL = 'https://jsonplaceholder.typicode.com/todos/1/'
+
+    request.open('GET', URL)  // GET 요청을 URL 로 보냄 
+    request.send() // 요청
+
+    const todo = request.response // 응답 데이터 저장
+    console.log(`data:${todo}`) //  출력  -> 응답 데이터를 기다리지않고 바로 출력해서 아무것도 나오지 않음 
+ 
+  </script>
+</body>
+</html>

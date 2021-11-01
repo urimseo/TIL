@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .done {
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+<body>
+    <form action="#">
+        <input type="text">
+        <button class="submit">Add</button>
+        <ul>
+
+        </ul>
+    </form>
+    <script>
+        const form = document.querySelector('form')
+
+        const Todo = function(event){
+            event.preventDefault()
+
+            const input = document.querySelector('input')
+            const text = input.value
+
+            if(text.trim()){
+                const liTag = document.createElement('li')
+                // input으로 입력한 값을 liTag의 innerText로 집어넣어
+                liTag.innerText = text
+
+                const ulTag = document.querySelector('ul')
+                ulTag.appendChild(liTag)
+
+                // DELETE
+                // 삭제버튼 생성
+                const deleteBtn = document.createElement('button')
+                deleteBtn.innerText = 'x'
+                liTag.appendChild(deleteBtn)
+
+                // 삭제 이벤트 핸들러 생성
+                deleteBtn.addEventListener('click', function(){
+                    liTag.remove()
+                })
+
+                
+                // UPDATE
+                // 취소선 긋기 
+                // liTag.style.textDecoration = 'line-through'
+                // 단순취소선 > li태그를 클릭했을 때, done으로 class 변경  -> style에서 지정한 css 적용되어 취소선 생김 
+                // liTag.addEventListener('click', function(){
+                    // liTag.setAttribute('class', 'done')
+                    // but 이상태면 취소가 되고 되돌릴 수 없다.
+                // })  
+
+                // 취소선 긋고, 다시 취소하는 법 
+                // 방법1 - length 활용 - remove()메서드 활용
+                // classList는 유사배열로 length값으로 요소의 개수 확인 가능하다. 
+                // 만약 이벤트가 추가되었으면 => done 값이 들어가있는것이니 remove로 done 삭제
+                // 이벤트 클래스가 없으면, 취소선 안되어 있는 상태로 취소선 추가!
+                // liTag.addEventListener('click', function(event){
+                //     if(event.target.classList.length){
+                //     event.target.classList.remove('done')
+                //     } else {
+                //         event.target.classList.add('done')
+                //     }
+                // })
+
+                // 방법2 - contains()활용
+                // 지정한 클래스의 값이 엘리먼트의 class 속성에 존재하는지 확인
+                // liTag.addEventListener('click', function(evnet){
+                //     if (event.target.classList.contains('done')){
+                //         event.target.classList.remove('done')
+                //     } else {
+                //         event.target.classList.add('done')
+                //     }
+                // })
+                
+                // 방법3 - toggle()활용
+                // 하나의 인수만 있을 때 클래스 값을 토글링
+                // 클래스가 존재한다면 제거하고 false를 반환하며, 존재하지 않으면 클래스를 추가하고 true를 반환한다. 
+                liTag.addEventListener('click', function(event){
+                    event.target.classList.toggle('done')
+                })
+
+
+
+            } else {
+                alert('값을 입력해 주세요. 공란 불가!! else걸렸어요')
+            }
+            event.target.reset()
+        }
+        form.addEventListener('submit', Todo)
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    console.log('Hi!')
+
+    setTimeout(function(){
+      console.log('urim')
+    },3000) // 3000이 아니라 0으로 바꿔도 순서는 바뀌지 않는다 
+    // 3000 -> 3초 뒤에 출력?? NONO
+    // 3초 뒤에 TaskQueue 로 이동한다. 
+    // CallStack이 빌때까지 기다린다. 
+    // CallStack이 비면 그때서야 CallStack으로 이동한다.
+
+    console.log('BYE')
+
+    // Hi!
+    // BYE
+    // urim
+
+  </script>
+</body>
+</html>
