@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ person.username }}님의 프로필</h1>
+
+{% with followings=person.followings.all followers=person.followers.all %}
+  <div>
+    <div>
+      팔로잉 : <span id="following-{{ person.pk }}">{{ followings|length }}</span> / 팔로워 : <span id="follower-{{ person.pk }}">{{ followers|length }}</span>
+    </div>
+    {% if request.user != person %}
+      <div>
+        <form id="follow-form" data-id="{{ person.pk }}">
+          {% csrf_token %}
+          {% if request.user in followers %}
+            <button id="follow-{{ person.pk }}" class='btn-secondary'>언팔로우</button>
+          {% else %}
+            <button id="follow-{{ person.pk }}" class='btn-primary'>팔로우</button>
+          {% endif %}
+        </form>
+      </div>
+    {% endif %}
+  </div>
+{% endwith %}
+
+
+<hr>
+
+<h2>{{ person.username }}'s 게시글</h2>
+{% for article in person.article_set.all %}
+  <div>{{ article.title }}</div>
+{% endfor %}
+
+<hr>
+
+<h2>{{ person.username }}'s 댓글</h2>
+{% for comment in person.comment_set.all %}
+  <div>{{ comment.content }}</div>
+{% endfor %}
+
+<hr>
+
+<h2>{{ person.username }}'s likes</h2>
+{% for article in person.like_articles.all %}
+  <div>{{ article.title }}</div>
+{% endfor %}
+
+<hr>
+
+<a href="{% url 'articles:index' %}">[back]</a>
+
+{% comment %} axios CDN {% endcomment %}
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+  const form = document.querySelector('#follow-form')
+  const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value
+  //console.log(csrftoken)
+  //console.log(form)
+  
+  form.addEventListener('submit', function (event) {
+    event.preventDefault()
+    const personId = event.target.dataset.id
+    //console.log(personId)
+    
+    // axios 보내는 방법1
+    axios.post(`http://127.0.0.1:8000/accounts/${personId}/follow/`, {}, {
+      headers:{'X-CSRFToken': csrftoken}
+      })
+    // 방법2
+    /*
+    axios({
+      method:'post',
+      url:`accounts/${personId}/follow/`,
+      headers :{'X-CSRFToken': csrftoken}
+
+    })
+    */
+    .then(function(response){
+      
+      const {followed, followers_count, followings_count} = response.data
+      const followerCount = document.querySelector(`#follower-${personId}`)
+      const followingCount = document.querySelector(`#following-${personId}`)
+      followerCount.innerText = followers_count
+      followingCount.innerText = followings_count
+    
+      const followBtn = document.querySelector(`#follow-${personId}`)
+      
+      if (followed) {
+        followBtn.innerText = '언팔로우'
+        followBtn.classList.remove('btn-primary')
+        followBtn.classList.add('btn-secondary')
+      } else {
+        followBtn.innerText = '팔로우'
+        followBtn.classList.remove('btn-secondary')
+        followBtn.classList.add('btn-primary')
+      }
+      
+      
+      /*
+      followBtn.classList.toggle('btn-secondary')
+      followBtn.classList.toggle('btn-primary')
+
+      if (followed){
+        followBtn.innerText='언팔로우'
+  
+      } else {
+        followBtn.innerText = '팔로우'
+      }
+      */
+
+
+    })
+      
+    })
+
+
+  
+</script>
+{% endblock %}
