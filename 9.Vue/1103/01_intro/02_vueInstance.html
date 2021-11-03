@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app"></div>
+  <div id="app2">
+    <p>{{ message }}</p>
+    <p>{{ greeting() }}</p>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    const app = new Vue({ //Vue 인스턴스 생성
+      el: '#app',
+      // view 인스턴스와 app을 바인딩
+    })
+    console.log(app)
+
+    const app2 = new Vue({
+      el:'#app2',
+      data: {
+        message:'Hello',
+      },
+      methods: {
+        greeting: function (){ // this는 app2를 가리킴, 화살표 함수 사용불가!!
+          const newMessage = this.message +'there!'
+          console.log(newMessage) // 여기는 Console에만 출력됨
+          return newMessage // return값이 있어야 한다
+        }
+      }
+    })
+
+  </script>
+</body>
+</html>
