@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    img {
+      height: 200px;
+      width: 200px;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h1>Dog Image Count</h1>
+    <h3>{{ dogcount }}마리의 개</h3>
+    <img v-for="dog in dogImg" :src="dog" alt="🐶dog image not found🐶"> <br>
+    <button @click="getDogImage">Get Dog</button>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/axios@0.12.0/dist/axios.min.js"></script>
+  <script>
+    const API_URI = 'https://dog.ceo/api/breeds/image/random'
+    const app = new Vue({
+      el: '#app',
+      data: {
+        dogImg: [],
+        dogcount: 0
+      },
+      methods: {
+        getDogImage: function () {
+          axios.get(API_URI)
+            .then(response => {
+              return response.data
+            })
+            .then(data => {
+              this.dogImg.push(data.message)
+              this.dogcount = this.dogImg.length
+            })
+        }
+      },
+      cretated: function () {
+        this.getDogImage()
+      }
+
+    })
+  </script>
+</body>
+</html>

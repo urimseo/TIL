@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+
+    <h1>a1: {{ a1 }}</h1>
+    <h1>a2: {{ a2 }}</h1>
+    <button @click="change_Data">data변경</button>
+    <h3>a1 + a2: {{ a1 + a2 }}</h3>
+    <h3>add_methods : {{ add_methods() }}</h3>
+    <h3>add_methods : {{ add_methods() }}</h3>
+    <h3>add_methods : {{ add_methods() }}</h3>
+    <p>[메소드 사용 이유]
+      <br>
+      -> 자바 스크립트 코드를그냥 쓰는 것은 코드 유지/보수에 좋지 않다.
+      때문에, 메소드로 작성해서 사용하여 함수만 수정하면 모두 수정되게끔!!하는 것. 
+    </p>
+    <hr>
+    <h3>add_computed: {{ add_computed }}</h3>
+    <h3>add_computed: {{ add_computed }}</h3>
+    <h3>add_computed: {{ add_computed }}</h3>
+    <p>[computed와 method의 차이점] <br>
+      - 만드는 방법은 유사 <br>
+      computed 는 계산된 값을 쓰기 때문에 함수 실행하는 ()를 붙이지 않는다. <br>
+      computed는 처음 호출때(25번줄) 값을 한번 계산 하고, 그 값을 저장한다. 따라서, computed 안에 있는 함수는 한번만 실행된다.
+      나머지 호출은 그냥 값(변수)으로 불러오게 된다. <br>
+      따라서, 데이터가 빈번하게 바뀌는 과정에서 computed를 사용해서 효율을 극대화 할 수 있다.  <br>
+      computed는 데이터의 변화를 감지해서, 변할때에만 다시 함수를 실행하고 또 저장!한다. <br>
+      BUT!!!!! Vue 내부의 데이터의 변화만 감지하고, 외부에서 불러온 데이터의 변화는 감지하지 못함.
+    </p>
+
+    <hr>
+    <h3>get Random Methods: {{ getRandomMethods() }}</h3>
+    <h3>get Random Methods: {{ getRandomMethods() }}</h3>
+    <h3>get Random Methods: {{ getRandomMethods() }}</h3>
+    <h3>get Random Computed: {{ getRandomComputed }}</h3>
+    <h3>get Random Computed: {{ getRandomComputed }}</h3>
+    <h3>get Random Computed: {{ getRandomComputed }}</h3>
+
+  </div>
+  <!-- Vue CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <!-- lodash CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        a1 : 100,
+        a2 : 200,
+      },
+      methods: {
+        add_methods: function() {
+          // console.log('add_methods 실행됨')
+          return this.a1 + this.a2
+        },
+        change_Data: function() {
+          this.a1 = Math.random()
+          this.a2 = _.random(3000)
+        },
+        getRandomMethods: function() {
+          console.log('getRandomMethods 실행')
+          return Math.random()
+        }
+      },
+      computed: {
+        add_computed: function() {
+          // console.log('add_computed 실행됨')
+          return this.a1 + this.a2
+        },
+        getRandomComputed: function() {
+          console.log('getRandomComputed 실행')
+          return Math.random()
+        }
+      }
+    })
+
+  </script>  
+</body>
+</html>
