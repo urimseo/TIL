@@ -1,0 +1,37 @@
+def solution(strings, n):
+    strings.sort()
+    answer = sorted(strings, key=lambda x : x[n])
+
+    # sort를 한번에 할 수도 있다. 
+    # answer = sorted(sorted(strings), key=lambda x:x[n])
+    return answer
+
+print(solution(["abce", "abcd", "cdx"], 2))
+
+# 람다식 활용하기 
+'''
+def 함수(매개변수)
+    return 결과
+
+lambda 매개변수 : 결과
+
+# 오름차순 정렬
+sorted(a, key = lambda x: x[0])
+# 내림차순 정렬
+sorted(a, key = lambda x: -x[0])
+'''
+
+# 같은 성적의 경우 이름순으로 정렬을 하는 코드입니다.
+# 성적이 같은 D, E학생의 경우 이름순으로 다시 정렬되는 것을 볼 수 있습니다.
+
+score_list = [
+    ("A학생", 60),
+    ("B학생", 80),
+    ("C학생", 50),
+    ("D학생", 70),
+    ("E학생", 70),
+]
+score_list.sort(key = lambda x : (-x[1], x[0]))
+print(score_list)
+
+# >>> [('B학생', 80), ('D학생', 70), ('E학생', 70), ('A학생', 60), ('C학생', 50)]
